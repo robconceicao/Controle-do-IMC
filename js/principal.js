@@ -23,6 +23,8 @@ for(var i = 0; i < pacientes.length; i++) {
     console.log("Peso inválido!");
     pesoEhValido = false;
     tdImc.textContent = "Peso inválido!";
+    paciente.classList.add("paciente-invalido");
+    paciente.classList.add("cor-texto");
 
   }
 
@@ -31,6 +33,10 @@ for(var i = 0; i < pacientes.length; i++) {
     console.log("Altura inválido!");
     pesoEhValido = false;
     tdImc.textContent = "Altura inválido!";
+    paciente.classList.add("paciente-invalido");
+    paciente.classList.add("cor-texto");
+    // paciente.style.backgroundColor = "lightcoral"; melhor usar no css
+    // paciente.style.color = "white"; melhor usar no css
 
   }
 
