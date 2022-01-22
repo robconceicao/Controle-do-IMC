@@ -48,3 +48,23 @@ for(var i = 0; i < pacientes.length; i++) {
   }
 
 }
+
+
+
+/* titulo.addEventListener("click", function() {
+
+  console.log("fui clicado");
+
+});*/
+
+//podemos usar funções nomeadas ou funções anônimas
+//função anônima
+/*titulo.addEventListener("click", function(){
+
+});*/
+
+//função nomeada
+/*
+function mostraMensagem(){
+  console.log("Olá eu fui clicado!");
+}*/
