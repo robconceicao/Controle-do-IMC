@@ -12,8 +12,7 @@ botaoAdicionar.addEventListener("click", function(event) {
     var erros = validaPaciente(paciente);
 
     if(erros.length > 0){
-      var mensagemErro = document.querySelector("#mensagem-erro");
-      mensagemErro.textContent = erros;
+      exibeMensagemDeErro(erros);
       return;
     }
 
@@ -23,8 +22,22 @@ botaoAdicionar.addEventListener("click", function(event) {
     tabela.appendChild(pacienteTr); // aqui eu ponho o pciente na tabela
 
     form.reset();//aqui pedimos para o fom limpar seus campos
+    var mensagensErro = document.querySelector("#mensagens-erro");
+    mensagensErro.innerHTML = "";
 
 });
+
+function exibeMensagemDeErro(erros) {
+  var ul = document.querySelector("#mensagens-erro");
+  ul.innerHTML = "";
+
+  erros.forEach(function(erro){
+    var li = document.createElement("li");
+    li.textContent = erro;
+    ul.appendChild(li);
+
+  });
+}
 
 function obtemPacienteDoFormulario(form) {
 
@@ -77,13 +90,33 @@ function montaTd(dado, classe) {
 
 }
 
-function validaPaciente(paciente){
+function validaPaciente(paciente) {
+
     var erros = [];
 
-    //como é um if simples pode deixar tudo em uma linha e sem chaves
-    if(!validaPeso(paciente.peso)) erros.push("Peso é inválido");
-    if(!validaAltura(paciente.altura)) erros.push("Altura é inválida");
+    if (paciente.nome.length == 0){
+        erros.push("O nome não pode ser em branco");
+    }
+
+    if (paciente.gordura.length == 0){
+        erros.push("A gordura não pode ser em branco");
+    }
+
+    if (paciente.peso.length == 0){
+        erros.push("O peso não pode ser em branco");
+    }
+
+    if (paciente.altura.length == 0){
+        erros.push("A altura não pode ser em branco");
+    }
+
+    if (!validaPeso(paciente.peso)){
+        erros.push("Peso é inválido");
+    }
+
+    if (!validaAltura(paciente.altura)){
+        erros.push("Altura é inválida");
+    }
 
     return erros;
-
 }
