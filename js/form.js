@@ -7,7 +7,7 @@ botaoAdicionar.addEventListener("click", function(event) {
     var paciente = obtemPacienteDoFormulario(form);
 
     //cria a tr e a td do paciente
-    var pacienteTr = montaTr(paciente);
+
 
     var erros = validaPaciente(paciente);
 
@@ -16,16 +16,19 @@ botaoAdicionar.addEventListener("click", function(event) {
       return;
     }
 
-    //adicionando o paciente na tabela
-    var tabela = document.querySelector("#tabela-pacientes");
-
-    tabela.appendChild(pacienteTr); // aqui eu ponho o pciente na tabela
+    adicionaPacienteNaTabela(paciente);
 
     form.reset();//aqui pedimos para o fom limpar seus campos
     var mensagensErro = document.querySelector("#mensagens-erro");
     mensagensErro.innerHTML = "";
 
 });
+
+function adicionaPacienteNaTabela(paciente) {
+  var pacienteTr = montaTr(paciente);
+  var tabela = document.querySelector("#tabela-pacientes");
+  tabela.appendChild(pacienteTr);
+}
 
 function exibeMensagemDeErro(erros) {
   var ul = document.querySelector("#mensagens-erro");
